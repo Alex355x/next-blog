@@ -1,14 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  ${'' /* padding: 50px 120px 30px 120px; */}
   display: flex;
   flex-direction: column;
-  ${'' /* align-items: flex-start; */}
-  ${'' /* position: relative; */}
-  ${'' /* justify-content: center; */}
-  ${'' /* align-items: center; */}
-  ${'' /* width: 100%; */}
   height: 100vh;
   background-color: aliceblue;
   font-family: 'Roboto', sans-serif;

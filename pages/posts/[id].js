@@ -18,7 +18,7 @@ export default function Post({post}) {
 }
 
 export async function getServerSideProps(context) {
-  console.log(context)
+  
 	const response = await fetch(`https://simple-blog-api.crew.red/posts/${context.query.id}`)
 	const post = await response.json()
 

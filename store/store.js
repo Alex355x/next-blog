@@ -1,8 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
-import count from './count/reducer'
-import tick from './tick/reducer'
 import posts from './posts/reducer'
 
 const bindMiddleware = (middleware) => {
@@ -14,18 +12,15 @@ const bindMiddleware = (middleware) => {
 }
 
 const combinedReducer = combineReducers({
-  count,
-  tick,
   posts,
 })
 
 const reducer = (state, action) => {
   if (action.type === HYDRATE) {
     const nextState = {
-      ...state, // use previous state
-      ...action.payload, // apply delta from hydration
+      ...state, 
+      ...action.payload, 
     }
-    if (state.count.count) nextState.count.count = state.count.count // preserve count value on client side navigation
     return nextState
   } else {
     return combinedReducer(state, action)

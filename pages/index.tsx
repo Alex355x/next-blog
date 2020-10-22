@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { wrapper } from '../store/store'
 import Link from 'next/link'
 import { addPosts } from '../store/posts/action'
-
+import { memo } from 'react'
 
 import {
   StyleLink,
@@ -12,10 +12,15 @@ import {
   Title,
 } from "./styled";
 
+interface Post {
+  postsList: string[] | number[],
+  post: any,
+  sortedPosts: string[] | number[],
+}
 
-const Index = ({ postsList}) => {
- 
-  const sortedPosts = postsList.slice().sort((a, b) => (b.id - a.id));
+const Index = ({ postsList} : Post) => {
+
+  const sortedPosts: string[] | number[] = postsList.slice().sort((a : any, b : any) => (b.id - a.id));
 
   return (
   <>
@@ -27,7 +32,7 @@ const Index = ({ postsList}) => {
       </Link>
       <Content>
       <h1>Latest Posts</h1>
-        {sortedPosts.map(post => 
+        {sortedPosts.map((post: any) => 
           <List key={post.id}>
             <Link href={`/posts/${post.id}`}
             >
@@ -45,8 +50,8 @@ export const getServerSideProps = wrapper.getServerSideProps(async ({ store }) =
   return { props: { data: await store.dispatch(addPosts()) } }
 })
 
-const mapState = (state) => {
+const mapState = (state: any) => {
   return {postsList: state.posts.posts};
 }
 
-export default connect(mapState, null)(Index)
+export default memo(connect(mapState, null)(Index))

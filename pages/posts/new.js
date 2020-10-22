@@ -1,12 +1,9 @@
 import Link from 'next/link'
 import React from 'react';
-import { useState, useEffect } from 'react';
-//import { createPost } from '../../store/posts/action';
+import { useState } from 'react';
 import { createPost } from '../../src/component/Gateway'
 
-
 export default function NewPost() {
-
   const [post, setPost] = useState({
     title:'',
     body:''
@@ -19,7 +16,6 @@ export default function NewPost() {
       [name]: value
     })
   }
-  //console.log(post)
   
   const onHandleSubmit = (event) => {
     event.preventDefault();
@@ -28,6 +24,7 @@ export default function NewPost() {
       title:'',
       body:''
     })
+
   };
 
   return (
@@ -61,6 +58,3 @@ export default function NewPost() {
     </>
   )
 }
-
-
-

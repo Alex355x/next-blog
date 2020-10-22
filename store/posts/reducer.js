@@ -16,14 +16,4 @@ export default function reducer(state = postsInitialState, action) {
   }
 }
 
-// export function reducerCreate (state = postsInitialState, action) {
-//   switch (action.type) {
-//       case postsActionTypes.CREATE_POSTS:
-//         return {
-//           ...state,
-//           post: action.payload,
-//         }
-//       default: 
-//       return state
-//   }
-// }
+
